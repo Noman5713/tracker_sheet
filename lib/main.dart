@@ -9,35 +9,74 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(home: ItemList(), debugShowCheckedModeBanner: false);
+    return MaterialApp(home: HomeActivity(), debugShowCheckedModeBanner: false);
   }
 }
 
-class ItemList extends StatelessWidget {
+class HomeActivity extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Problem 3: List View"),
+        title: Text("Problem 4: Text Styles"),
         backgroundColor: const Color.fromARGB(255, 184, 222, 241),
       ),
-      body: ListView.builder(
-        itemCount: 50,
-        itemBuilder: (context, index) {
-          return Container(
-            alignment: Alignment.center,
-            padding: EdgeInsets.all(20),
-            margin: EdgeInsets.all(5),
-            decoration: BoxDecoration(
-              color: const Color.fromARGB(255, 207, 219, 229),
-              borderRadius: BorderRadius.circular(10),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text("Normal Text", style: TextStyle(fontSize: 25)),
+            Text(
+              "Bold Text",
+              style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
             ),
-            child: Text(
-              'Item ${index + 1}',
-              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+            SizedBox(height: 10),
+
+            Text(
+              "Italic Text",
+              style: TextStyle(fontSize: 25, fontStyle: FontStyle.italic),
             ),
-          );
-        },
+            SizedBox(height: 10),
+
+            Text(
+              "Underlined Text",
+              style: TextStyle(
+                fontSize: 25,
+                decoration: TextDecoration.underline,
+                decorationColor: const Color.fromARGB(255, 0, 0, 0),
+                decorationThickness: 2,
+              ),
+            ),
+            SizedBox(height: 10),
+
+            Text(
+              "Colored Text",
+              style: TextStyle(fontSize: 25, color: Colors.purple),
+            ),
+            SizedBox(height: 10),
+
+            Text(
+              "Shadowed Text",
+              style: TextStyle(
+                fontSize: 25,
+                fontWeight: FontWeight.bold,
+                shadows: [
+                  Shadow(
+                    color: Colors.black,
+                    blurRadius: 5,
+                    offset: Offset(2, 2),
+                  ),
+                ],
+              ),
+            ),
+            SizedBox(height: 10),
+
+            Text(
+              "Font Style: Dancing Script",
+              style: TextStyle(fontSize: 25, fontFamily: "DancingScript"),
+            ),
+          ],
+        ),
       ),
     );
   }
