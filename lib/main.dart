@@ -9,73 +9,47 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(home: HomeActivity(), debugShowCheckedModeBanner: false);
+    return MaterialApp(home: HomeScreen(), debugShowCheckedModeBanner: false);
   }
 }
 
-class HomeActivity extends StatelessWidget {
+class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Problem 4: Text Styles"),
+        title: Text("Home Screen"),
         backgroundColor: const Color.fromARGB(255, 184, 222, 241),
       ),
       body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Text("Normal Text", style: TextStyle(fontSize: 25)),
-            Text(
-              "Bold Text",
-              style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
-            ),
-            SizedBox(height: 10),
+        child: ElevatedButton(
+          onPressed: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => DetailScreen()),
+            );
+          },
+          child: Text("Detail Screen", style: TextStyle(fontSize: 30)),
+        ),
+      ),
+    );
+  }
+}
 
-            Text(
-              "Italic Text",
-              style: TextStyle(fontSize: 25, fontStyle: FontStyle.italic),
-            ),
-            SizedBox(height: 10),
-
-            Text(
-              "Underlined Text",
-              style: TextStyle(
-                fontSize: 25,
-                decoration: TextDecoration.underline,
-                decorationColor: const Color.fromARGB(255, 0, 0, 0),
-                decorationThickness: 2,
-              ),
-            ),
-            SizedBox(height: 10),
-
-            Text(
-              "Colored Text",
-              style: TextStyle(fontSize: 25, color: Colors.purple),
-            ),
-            SizedBox(height: 10),
-
-            Text(
-              "Shadowed Text",
-              style: TextStyle(
-                fontSize: 25,
-                fontWeight: FontWeight.bold,
-                shadows: [
-                  Shadow(
-                    color: Colors.black,
-                    blurRadius: 5,
-                    offset: Offset(2, 2),
-                  ),
-                ],
-              ),
-            ),
-            SizedBox(height: 10),
-
-            Text(
-              "Font Style: Dancing Script",
-              style: TextStyle(fontSize: 25, fontFamily: "DancingScript"),
-            ),
-          ],
+class DetailScreen extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("Detail Screen"),
+        backgroundColor: const Color.fromARGB(255, 185, 255, 187),
+      ),
+      body: Center(
+        child: ElevatedButton(
+          onPressed: () {
+            Navigator.pop(context);
+          },
+          child: Text("Home Screen", style: TextStyle(fontSize: 30)),
         ),
       ),
     );
