@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 main() {
-  runApp(const MyApp());
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -9,31 +9,41 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      home: HomeActivity(),
-      debugShowCheckedModeBanner: false,
-    );
+    return MaterialApp(home: HomeActivity(), debugShowCheckedModeBanner: false);
   }
 }
 
-class HomeActivity extends StatelessWidget {
-  const HomeActivity({super.key});
+class HomeActivity extends StatefulWidget {
+  _HomeActivityState createState() => _HomeActivityState();
+}
+
+class _HomeActivityState extends State<HomeActivity> {
+  String text = "Press the Button";
+
+  void _afterclick() {
+    setState(() {
+      text = "Button Pressed";
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Problem 1: Hello World"),
+        title: Text("Problem 2: Button Pressed"),
         backgroundColor: const Color.fromARGB(255, 184, 222, 241),
       ),
       body: Center(
-        child: Text(
-          "Hello World!",
-          style: TextStyle(
-            color: const Color.fromARGB(255, 38, 122, 82),
-            fontFamily: 'DancingScript',
-            fontSize: 50,
-          ),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text(text, style: TextStyle(fontSize: 50)),
+            //Container(padding: EdgeInsets.all(20), color: Colors.blue),
+            ElevatedButton(
+              onPressed: _afterclick,
+              child: Text("Button", style: TextStyle(fontSize: 30)),
+            ),
+          ],
         ),
       ),
     );
