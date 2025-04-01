@@ -30,7 +30,7 @@ class HomeActivity extends StatelessWidget {
         child: Text(
           "Hello World!",
           style: TextStyle(
-            color: Colors.deepOrangeAccent,
+            color: const Color.fromARGB(255, 38, 122, 82),
             fontFamily: 'DancingScript',
             fontSize: 50,
           ),
