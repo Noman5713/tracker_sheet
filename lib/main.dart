@@ -20,120 +20,30 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Home"),
-        backgroundColor: const Color.fromARGB(255, 184, 222, 241),
-      ),
-      drawer: NaviDrawer(),
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Center(child: Image.asset("assets/image/us.jpg")),
-          Text(
-            "This is HomeScreen.",
-            style: TextStyle(
-              fontSize: 40,
-              color: const Color.fromARGB(255, 0, 52, 12),
-              fontWeight: FontWeight.bold,
+        backgroundColor: const Color.fromARGB(255, 188, 188, 188),
+        elevation: 100,
+        title: Row(
+          children: [
+            Image.asset("assets/image/logo.png", width: 40, height: 40),
+            Text(
+              "  Research Pro",
+              style: TextStyle(fontWeight: FontWeight.bold),
             ),
-          ),
+          ],
+        ),
+        actions: [
+          IconButton(icon: Icon(Icons.search), onPressed: () {}),
+          IconButton(icon: Icon(Icons.menu), onPressed: () {}),
         ],
       ),
-    );
-  }
-}
-
-class NaviDrawer extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Drawer(
-      child: ListView(
-        padding: EdgeInsets.zero,
-        children: [
-          DrawerHeader(
-            child: Column(children: [Icon(Icons.home), Text("Home")]),
-          ),
-          ListTile(
-            leading: Icon(Icons.home),
-            title: Text("Home"),
-            onTap: () {
-              Navigator.pop(context);
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => HomeScreen()),
-              );
-            },
-          ),
-          ListTile(
-            leading: Icon(Icons.settings),
-            title: Text("Settings"),
-            onTap: () {
-              Navigator.pop(context);
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => SettingsScreen()),
-              );
-            },
-          ),
-          ListTile(
-            leading: Icon(Icons.info),
-            title: Text("About Us"),
-            onTap: () {
-              Navigator.pop(context);
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => AboutUsScreen()),
-              );
-            },
-          ),
-        ],
-      ),
-    );
-  }
-}
-
-class SettingsScreen extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(title: Text("Settings")),
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Image.asset("assets/image/settings.png"),
-          Text(
-            "This is SettingScreen.",
-            style: TextStyle(
-              fontSize: 40,
-              color: const Color.fromARGB(255, 0, 52, 12),
-              fontWeight: FontWeight.bold,
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-}
-
-class AboutUsScreen extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(title: Text("About Us")),
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Image.network(
-            "https://upload.wikimedia.org/wikipedia/commons/b/bc/Friends_logo.svg",
-          ),
-          Text(
-            "We are friends",
-            style: TextStyle(
-              fontSize: 40,
-              color: const Color.fromARGB(255, 0, 52, 12),
-              fontWeight: FontWeight.bold,
-            ),
-          ),
-        ],
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Image.asset("assets/image/logo.png", width: 300, height: 300),
+            Text("Home Screen", style: TextStyle(fontSize: 50)),
+          ],
+        ),
       ),
     );
   }
