@@ -9,43 +9,131 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: _ContainerScreen(),
-      debugShowCheckedModeBanner: false,
-    );
+    return MaterialApp(home: HomeScreen(), debugShowCheckedModeBanner: false);
   }
 }
 
-class _ContainerScreen extends StatelessWidget {
-  const _ContainerScreen({super.key});
+class HomeScreen extends StatelessWidget {
+  const HomeScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Container Screen"),
+        title: Text("Home"),
         backgroundColor: const Color.fromARGB(255, 184, 222, 241),
       ),
-      body: Center(
-        child: Container(
-          width: 350,
-          height: 200,
-          decoration: BoxDecoration(
-            color: const Color.fromARGB(255, 237, 237, 237),
-            borderRadius: BorderRadius.circular(20),
-            boxShadow: [BoxShadow(color: Colors.black12, blurRadius: 10)],
-          ),
-          child: Center(
-            child: Text(
-              "This is a text widget inside a container widget",
-              style: TextStyle(
-                color: Colors.black,
-                fontSize: 20,
-                fontWeight: FontWeight.bold,
-              ),
+      drawer: NaviDrawer(),
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Center(child: Image.asset("assets/image/us.jpg")),
+          Text(
+            "This is HomeScreen.",
+            style: TextStyle(
+              fontSize: 40,
+              color: const Color.fromARGB(255, 0, 52, 12),
+              fontWeight: FontWeight.bold,
             ),
           ),
-        ),
+        ],
+      ),
+    );
+  }
+}
+
+class NaviDrawer extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Drawer(
+      child: ListView(
+        padding: EdgeInsets.zero,
+        children: [
+          DrawerHeader(
+            child: Column(children: [Icon(Icons.home), Text("Home")]),
+          ),
+          ListTile(
+            leading: Icon(Icons.home),
+            title: Text("Home"),
+            onTap: () {
+              Navigator.pop(context);
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => HomeScreen()),
+              );
+            },
+          ),
+          ListTile(
+            leading: Icon(Icons.settings),
+            title: Text("Settings"),
+            onTap: () {
+              Navigator.pop(context);
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => SettingsScreen()),
+              );
+            },
+          ),
+          ListTile(
+            leading: Icon(Icons.info),
+            title: Text("About Us"),
+            onTap: () {
+              Navigator.pop(context);
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => AboutUsScreen()),
+              );
+            },
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class SettingsScreen extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(title: Text("Settings")),
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Image.asset("assets/image/settings.png"),
+          Text(
+            "This is SettingScreen.",
+            style: TextStyle(
+              fontSize: 40,
+              color: const Color.fromARGB(255, 0, 52, 12),
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class AboutUsScreen extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(title: Text("About Us")),
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Image.network(
+            "https://upload.wikimedia.org/wikipedia/commons/b/bc/Friends_logo.svg",
+          ),
+          Text(
+            "We are friends",
+            style: TextStyle(
+              fontSize: 40,
+              color: const Color.fromARGB(255, 0, 52, 12),
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+        ],
       ),
     );
   }
